@@ -11,7 +11,8 @@ Spree::Core::Engine.routes.append do
 
   resources :products do
     resources :reviews, only: [:index, :new, :create] do
+      resources :feedback_reviews
     end
   end
-  post '/reviews/:review_id/feedback(.:format)' => 'feedback_reviews#create', as: :feedback_reviews
+  post '/reviews/:review_id/feedback(.:format)' => 'feedback_reviews#create'
 end
